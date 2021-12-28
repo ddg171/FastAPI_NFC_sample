@@ -34,7 +34,6 @@ async def input_original():
 
 @app.get("/nfc")
 async def nfc():
-    global clf
     try:
         res= await asyncio.wait_for(read_nfc_tag_async(), timeout=10)
         return str(res)
