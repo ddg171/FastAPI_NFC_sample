@@ -8,6 +8,7 @@
 
 # 起動方法
 
+"pipenv shell"
 "uvicorn app:app"
 
 # API について
