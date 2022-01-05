@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>hello</h1>
+        <form id="nfc">
+            <input type="submit" value="nfc" />
+        </form>
+        <p id="result">ボタンを押すと読み込みを待機します。</p>
+    </body>
+    <script>
+        const form = document.querySelector('#nfc');
+        const result = document.querySelector('#result');
+
+        form.addEventListener('submit', (e) => {
+            result.textContent = '読み込み待ちです。';
+            e.preventDefault();
+            axios
+                .get('/nfc')
+                .then((res) => {
+                    console.log(res);
+                    const msg = res?.data?.result;
+                    result.textContent = msg;
+                })
+                .catch((e) => {
+                    console.log(e);
+                });
+        });
+    </script>
+</html>

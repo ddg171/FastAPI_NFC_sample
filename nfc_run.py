@@ -3,7 +3,7 @@ import asyncio
 
 # NFCでデータを読み込むための関数
 def read_nfc_tag(clf):
-    data = None
+    data = {}
     # アロー関数的な処理
     def connected(tag):
         # スコープの扱いに注意
@@ -17,6 +17,7 @@ def read_nfc_tag(clf):
 # 上の読み込み処理を非同期処理にした関数
 async def read_nfc_tag_async():
     clf=  nfc.ContactlessFrontend('usb')    
+    d={}
     try:
         print("start")
         # イベントループを取得して
